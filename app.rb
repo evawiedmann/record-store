@@ -19,11 +19,8 @@ get('/albums/new') do
 end
 
 post('/albums') do
-  name = params[:album_name]
-  year = params[:album_year]
-  genre = params[:album_genre]
-  artist = params[:album_artist]
-  album = Album.new(name, nil, year, genre, artist)
+  values = *params.values
+  album = Album.new(values[0], nil, values[1], values[2], values[3])
   album.save()
   @albums = Album.all() # Adding this line will fix the error.
   erb(:albums)
@@ -31,7 +28,8 @@ end
 
 patch('/albums/:id') do
   @album = Album.find(params[:id].to_i())
-  @album.update(params[:name], params[:year], params[:genre], params[:artist])
+  values = *params.values
+  @album.update(values[1], values[3], values[4], values[2])
   @albums = Album.all
   erb(:albums)
 end
