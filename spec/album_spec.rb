@@ -84,4 +84,13 @@ describe '#Album' do
       expect(album2.name).to(eq("Giant Steps 2"))
     end
   end
+
+  describe('#sort') do
+    it('sorts an array of albums') do
+      album = Album.new('Giant Steps', nil, '1960', 'Jazz', 'John Coltrane')
+      album.save()
+      arr = ['a', 'c', 'a', 'b']
+      expect(arr.sort()).to(eq(['a', 'a', 'b', 'c']))
+    end
+  end
 end

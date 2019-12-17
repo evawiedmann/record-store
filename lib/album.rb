@@ -36,6 +36,10 @@ class Album
      @@albums.values.select { |album| album.name =~ /#{search_term}/i }
   end
 
+  def self.sort
+    @@albums.values.sort { |a, b| a.name <=> b.name }
+  end
+
   def update(name, year, genre, artist)
     @name = (name != '') ? name : @name
     @year = (year != '') ? year : @year
