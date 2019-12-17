@@ -56,8 +56,9 @@ describe '#Album' do
     it('updates an album by id') do
       album = Album.new('Giant Steps', nil, '1960', 'Jazz', 'John Coltrane')
       album.save()
-      album.update('A Love Supreme')
+      album.update('A Love Supreme', '1970', 'Jazz', 'John Coltrane')
       expect(album.name).to(eq('A Love Supreme'))
+      expect(album.year).to(eq('1970'))
     end
   end
 
@@ -69,6 +70,18 @@ describe '#Album' do
       album2.save()
       album.delete()
       expect(Album.all).to(eq([album2]))
+    end
+  end
+
+  describe('#search') do
+    it('searches for albums by title') do
+      album = Album.new('Giant Steps', nil, '1960', 'Jazz', 'John Coltrane')
+      album.save()
+      album2 = Album.new('Giant Steps 2', nil, '1960', 'Jazz', 'John Coltrane')
+      album2.save()
+      search_term = 'steps'
+      expect(Album.search(search_term)).to(eq([album, album2]))
+      expect(album2.name).to(eq("Giant Steps 2"))
     end
   end
 end
