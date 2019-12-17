@@ -29,7 +29,7 @@ end
 patch('/albums/:id') do
   @album = Album.find(params[:id].to_i())
   values = *params.values
-  @album.update(values[1], values[3], values[4], values[2])
+  @album.update(values[1], values[2], values[3], values[4])
   @albums = Album.all
   erb(:albums)
 end
