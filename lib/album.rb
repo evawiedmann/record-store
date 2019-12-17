@@ -33,10 +33,10 @@ class Album
   end
 
   def update(name, year, genre, artist)
-    @name = name
-    @year = year
-    @genre = genre
-    @artist = artist
+    @name = (name != '') ? name : @name
+    @year = (year != '') ? year : @year
+    @genre = (genre != '') ? genre : @genre
+    @artist = (artist != '') ? artist : @artist
   end
 
   def delete
