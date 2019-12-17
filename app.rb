@@ -6,7 +6,7 @@ also_reload('lib/**/*.rb')
 
 get('/') do
   @albums = Album.sort
-  erb(:albums)
+  erb(:landing_page)
 end
 
 get('/albums') do
