@@ -16,7 +16,7 @@
   <button type="submit">Update</button>
 </form>
 
-<p><a href="/">Return to album list</a></p>
+<p><a href="/albums">Return to album list</a></p>
 
 <form action="/albums/<%= @album.id() %>" method="post">
   <input name="_method" type="hidden" value="delete">
