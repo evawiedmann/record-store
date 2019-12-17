@@ -9,6 +9,16 @@ get('/') do
   erb(:albums)
 end
 
+get('/albums') do
+  if params["search"]
+    @albums = Album.search(params[:search])
+  else
+    @albums = Album.all
+  end
+    # puts @albums
+  erb(:albums)
+end
+
 get('/albums/:id/edit') do
   @album = Album.find(params[:id].to_i())
   erb(:edit_album)
